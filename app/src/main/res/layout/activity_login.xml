@@ -63,8 +63,43 @@
         android:layout_marginTop="25dp"
         android:layout_gravity="end"
         android:textAllCaps="false"
-        android:background="@drawable/btn_bg"
+        android:background="@color/white"
+        android:text="Masuk"
+        android:textStyle="bold"
+        android:drawableRight="@drawable/ic_baseline_arrow_forward_ios_24"
         />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="80dp"
+        android:layout_weight="1"
+        android:gravity="center">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Belum punya akun? "
+            android:fontFamily="sans-serif-condensed-medium"
+            android:textColor="@color/white"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/regist"
+            android:fontFamily="sans-serif-condensed-medium"
+            android:text="Daftar di sini!"
+            android:textStyle="bold"
+            android:textColor="@color/blue"
+            android:background="@color/white"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            />
+
+    </LinearLayout>
+
 
 
 
