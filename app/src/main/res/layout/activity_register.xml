@@ -14,7 +14,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="70dp"
+        android:layout_marginTop="50dp"
         android:gravity="center_horizontal"
         android:text="Daftar Akun"
         android:textSize="40sp"
@@ -33,6 +33,7 @@
         android:drawableRight="@drawable/ic_baseline_person_24"
         android:background="@color/white"
         android:hint="Nama Lengkap"
+        android:textColorHint="@color/black"
         />
 
     <EditText
@@ -46,6 +47,7 @@
         android:drawableRight="@drawable/ic_baseline_person_24"
         android:background="@color/white"
         android:hint="Buat Username"
+        android:textColorHint="@color/black"
         />
 
     <EditText
@@ -59,6 +61,7 @@
         android:drawableRight="@drawable/ic_baseline_email_24"
         android:background="@color/white"
         android:hint="Email Aktif"
+        android:textColorHint="@color/black"
         />
 
     <EditText
@@ -72,6 +75,7 @@
         android:drawableRight="@drawable/ic_baseline_location_on_24"
         android:background="@color/white"
         android:hint="Alamat Domisili"
+        android:textColorHint="@color/black"
         />
 
     <EditText
@@ -85,6 +89,7 @@
         android:drawableRight="@drawable/ic_baseline_contact_phone_24"
         android:background="@color/white"
         android:hint="Nomor Telepon"
+        android:textColorHint="@color/black"
         />
 
     <EditText
@@ -98,6 +103,7 @@
         android:drawableRight="@drawable/ic_baseline_lock_24"
         android:background="@color/white"
         android:hint="Buat Password"
+        android:textColorHint="@color/black"
         />
 
 
@@ -112,6 +118,7 @@
         android:drawableRight="@drawable/ic_baseline_lock_24"
         android:background="@color/white"
         android:hint="Konfirmasi Password"
+        android:textColorHint="@color/black"
         />
 
     <CheckBox
@@ -152,7 +159,7 @@
         android:orientation="horizontal"
         android:layout_marginTop="80dp"
         android:layout_weight="1"
-        android:gravity="center">
+        android:gravity="top|center">
 
         <TextView
             android:layout_width="wrap_content"

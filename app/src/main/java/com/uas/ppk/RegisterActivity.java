@@ -37,7 +37,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
     private TextView tv_login;
     private ProgressBar loading;
 
-    private String URL_REGIST = "http://192.168.100.227/register";
+    private String URL_REGIST = "http://192.168.43.94/register";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -149,7 +149,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
                 params.put("alamat",alamat);
                 params.put("telp",telp);
                 params.put("pass",password);
-                params.put("konf_pass",konfirmasi);
+                params.put("konf",konfirmasi);
                 return params;
             }
         };

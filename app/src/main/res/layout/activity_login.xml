@@ -41,6 +41,7 @@
         android:drawableRight="@drawable/ic_baseline_person_24"
         android:background="@color/white"
         android:hint="Username"
+        android:textColorHint="@color/black"
         />
 
     <EditText
@@ -54,6 +55,7 @@
         android:drawableRight="@drawable/ic_baseline_lock_24"
         android:background="@color/white"
         android:hint="Password"
+        android:textColorHint="@color/black"
         />
 
     <Button
@@ -68,6 +70,14 @@
         android:textStyle="bold"
         android:drawableRight="@drawable/ic_baseline_arrow_forward_ios_24"
         />
+
+    <ProgressBar
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/progress_login"
+        android:visibility="gone"
+        android:layout_marginTop="20dp"
+        android:layout_gravity="right"/>
 
     <LinearLayout
         android:layout_width="match_parent"
