@@ -32,7 +32,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     private Button btn_login;
     private TextView tv_registrasi;
     private ProgressBar loading;
-    private String URL_LOGIN = "http://192.168.43.94/login";
+    private String URL_LOGIN = "http://192.168.100.227/ppk-api/public/login";
     private User user;
 
     @Override
@@ -84,27 +84,32 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                         try {
                             JSONObject jsonObject = new JSONObject(response);
                             String status = jsonObject.getString("status");
-                            String msg = jsonObject.getString("msg");
                             if (status.equals("1")) {
                                 Toast.makeText(LoginActivity.this, "Login berhasil!", Toast.LENGTH_SHORT).show();
                                 user.setId(jsonObject.getInt("userId"));
-                                user.setNama(jsonObject.getString("nama"));
+                                user.setNama(jsonObject.getString("nama_lengkap"));
                                 user.setUsername(jsonObject.getString("username"));
                                 user.setEmail(jsonObject.getString("email"));
                                 user.setAlamat(jsonObject.getString("alamat"));
                                 user.setTelp(jsonObject.getString("telp"));
-                                user.setAdmin(jsonObject.getBoolean("admin"));
+                                if(jsonObject.getString("admin").equals("0")) {
+                                    user.setAdmin(false);
+                                } else {
+                                    user.setAdmin(true);
+                                }
+
                                 Log.e("Cek",user.toString());
                                 loading.setVisibility(View.GONE);
                                 btn_login.setVisibility(View.VISIBLE);
                             } else {
+                                String msg = jsonObject.getString("msg");
                                 Toast.makeText(LoginActivity.this, msg, Toast.LENGTH_SHORT).show();
                                 loading.setVisibility(View.GONE);
                                 btn_login.setVisibility(View.VISIBLE);
                             }
                         } catch (JSONException e) {
                             e.printStackTrace();
-                            Toast.makeText(LoginActivity.this, "Terjadi Masalah", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(LoginActivity.this,e.toString(),Toast.LENGTH_SHORT).show();
                             loading.setVisibility(View.GONE);
                             btn_login.setVisibility(View.VISIBLE);
                         }
@@ -113,7 +118,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        Toast.makeText(LoginActivity.this, "Terjadi Masalah", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(LoginActivity.this, error.toString(), Toast.LENGTH_SHORT).show();
                         loading.setVisibility(View.GONE);
                         btn_login.setVisibility(View.VISIBLE);
                     }

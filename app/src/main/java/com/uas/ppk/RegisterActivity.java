@@ -37,7 +37,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
     private TextView tv_login;
     private ProgressBar loading;
 
-    private String URL_REGIST = "http://192.168.43.94/register";
+    private String URL_REGIST = "http://192.168.100.227/ppk-api/public/register";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -126,7 +126,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
                             }
                         } catch (JSONException e) {
                             e.printStackTrace();
-                            Toast.makeText(RegisterActivity.this, "Registrasi Gagal", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(RegisterActivity.this, "Terjadi masalah", Toast.LENGTH_SHORT).show();
                             loading.setVisibility(View.GONE);
                             btn_register.setVisibility(View.VISIBLE);
                         }
@@ -135,6 +135,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
+                        Toast.makeText(RegisterActivity.this, "Terjadi masalah", Toast.LENGTH_SHORT).show();
                         loading.setVisibility(View.GONE);
                         btn_register.setVisibility(View.VISIBLE);
                     }
