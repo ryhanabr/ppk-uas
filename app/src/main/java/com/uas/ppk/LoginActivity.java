@@ -98,7 +98,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                                     user.setAdmin(true);
                                 }
 
-                                Log.e("Cek",user.toString());
+                                Intent intent = new Intent(LoginActivity.this,MenuActivity.class);
+                                startActivity(intent);
                                 loading.setVisibility(View.GONE);
                                 btn_login.setVisibility(View.VISIBLE);
                             } else {
