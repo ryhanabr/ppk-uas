@@ -33,7 +33,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     private TextView tv_registrasi;
     private ProgressBar loading;
     private String URL_LOGIN = "http://192.168.100.227/ppk-api/public/login";
-    private User user;
+    public static User user;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
