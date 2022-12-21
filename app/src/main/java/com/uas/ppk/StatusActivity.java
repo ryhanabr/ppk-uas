@@ -1,35 +1,43 @@
 package com.uas.ppk;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
+import androidx.cardview.widget.CardView;
 
+
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 
-import java.util.ArrayList;
 
-public class StatusActivity extends AppCompatActivity {
+public class StatusActivity extends AppCompatActivity implements View.OnClickListener {
 
-    private RecyclerView recyclerView;
-    private TiketAdapter adapter;
-    private ArrayList<Tiket> tiketArrayList;
+    public static String type;
+    public static Boolean before = true;
+    private CardView kesehatan,kecantikan;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_status);
+        before = true;
+        DokterActivity.before = false;
 
-        addData();
-        recyclerView = (RecyclerView) findViewById(R.id.list);
-        adapter = new TiketAdapter(tiketArrayList);
-        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(StatusActivity.this);
-        recyclerView.setLayoutManager(layoutManager);
-        recyclerView.setAdapter(adapter);
-    }
+        kesehatan = (CardView) findViewById(R.id.kesehatan);
+        kecantikan = (CardView) findViewById(R.id.kecantikan);
 
-    private void addData() {
-
+        kesehatan.setOnClickListener(this);
+        kecantikan.setOnClickListener(this);
     }
 
 
+    @Override
+    public void onClick(View view) {
+        if(view == kesehatan) {
+            type = "Konsultasi Kesehatan";
+        } else if(view == kecantikan) {
+            type = "Perawatan Kecantikan";
+        }
+        Intent intent = new Intent(StatusActivity.this, tampilJadwal.class);
+        startActivity(intent);
+    }
 }

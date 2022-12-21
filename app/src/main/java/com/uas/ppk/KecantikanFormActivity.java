@@ -36,7 +36,7 @@ public class KecantikanFormActivity extends AppCompatActivity implements View.On
     private ProgressBar loading;
 
     private User user;
-    private String URL = "http://192.168.100.227/ppk-api/public/kecantikan";
+    private String URL = "http://192.168.43.94/ppk-api/public/kecantikan";
     public static int lastId;
     private String jk;
 

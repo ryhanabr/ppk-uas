@@ -11,11 +11,14 @@ public class DokterActivity extends AppCompatActivity implements View.OnClickLis
 
     private CardView senin, selasa, rabu, kamis, jumat, sabtu;
     public static String hari;
+    public static Boolean before = true;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dokter);
+        before = true;
+        StatusActivity.before = false;
 
         senin = (CardView) findViewById(R.id.senin);
         selasa = (CardView) findViewById(R.id.selasa);
@@ -45,7 +48,7 @@ public class DokterActivity extends AppCompatActivity implements View.OnClickLis
         } else if(view == jumat) {
             hari = "Jumat";
         } else if(view == sabtu) {
-            hari = "Sabtu;";
+            hari = "Sabtu";
         }
         Intent intent = new Intent(DokterActivity.this, tampilJadwal.class);
         startActivity(intent);

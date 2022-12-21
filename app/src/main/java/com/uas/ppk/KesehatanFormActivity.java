@@ -39,13 +39,12 @@ public class KesehatanFormActivity extends AppCompatActivity implements View.OnC
 
     private EditText namaPasien_et, umur_et, tanggal_et, keluhan_et;
     private Button otomatis_b, simpan_b;
-    private RadioButton laki_laki_rb, perempuan_rb;
-    private String kat;
+    private RadioButton laki_laki_rb, perempuan_rb, tht_rb, mata_rb, gigi_rb, umum_rb;
     private RadioGroup jk_rg;
     private ProgressBar loading;
 
     private User user;
-    private String URL = "http://192.168.100.227/ppk-api/public/kesehatan";
+    private String URL = "http://192.168.43.94/ppk-api/public/kesehatan";
     public static int lastId;
     private String jk;
 
@@ -53,19 +52,6 @@ public class KesehatanFormActivity extends AppCompatActivity implements View.OnC
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_kesehatan_form);
-
-        textInputLayout = findViewById(R.id.kategori);
-        autoCompleteTextView = findViewById(R.id.item);
-
-        String [] items = {"THT", "Mata", "Gigi", "Umum"};
-        ArrayAdapter<String> itemAdapter = new ArrayAdapter<>(KesehatanFormActivity.this, R.layout.dropdown_item, items);
-        autoCompleteTextView.setAdapter(itemAdapter);
-        autoCompleteTextView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                kat = (String) parent.getItemAtPosition(position).toString();
-            }
-        });
 
         namaPasien_et = (EditText) findViewById(R.id.namaPasien);
         umur_et = (EditText) findViewById(R.id.umur);
@@ -75,6 +61,10 @@ public class KesehatanFormActivity extends AppCompatActivity implements View.OnC
         simpan_b = (Button) findViewById(R.id.simpan);
         laki_laki_rb = (RadioButton) findViewById(R.id.laki_laki);
         perempuan_rb = (RadioButton) findViewById(R.id.perempuan);
+        tht_rb = (RadioButton) findViewById(R.id.tht);
+        mata_rb = (RadioButton) findViewById(R.id.mata);
+        gigi_rb = (RadioButton) findViewById(R.id.gigi);
+        umum_rb = (RadioButton) findViewById(R.id.umum);
         user = LoginActivity.user;
         jk_rg = (RadioGroup) findViewById(R.id.jk);
         loading = (ProgressBar) findViewById(R.id.loading);
@@ -94,6 +84,16 @@ public class KesehatanFormActivity extends AppCompatActivity implements View.OnC
             String umur = umur_et.getText().toString();
             String tanggal = tanggal_et.getText().toString();
             String keluhan = keluhan_et.getText().toString();
+            String kategori = "null";
+            if(tht_rb.isChecked()) {
+                kategori = "THT";
+            } else if(mata_rb.isChecked()) {
+                kategori = "Mata";
+            } else if(gigi_rb.isChecked()) {
+                kategori = "Gigi";
+            } else if(umum_rb.isChecked()) {
+                kategori = "Umum";
+            }
             jk = "null";
             if(laki_laki_rb.isChecked()) {
                 jk = "L";
@@ -101,7 +101,7 @@ public class KesehatanFormActivity extends AppCompatActivity implements View.OnC
                 jk = "P";
             }
 
-            if(!namaPasien.isEmpty() && !umur.isEmpty() && !kat.isEmpty() && !jk.equals("null") && !tanggal.isEmpty() && !keluhan.isEmpty()) {
+            if(!namaPasien.isEmpty() && !umur.isEmpty() && !kategori.equals("null") && !jk.equals("null") && !tanggal.isEmpty() && !keluhan.isEmpty()) {
                 SimpanKesehatan();
             } else {
                 namaPasien_et.setError("Mohon masukkan nama pasien");
@@ -122,13 +122,23 @@ public class KesehatanFormActivity extends AppCompatActivity implements View.OnC
 
         final String namaPasien = this.namaPasien_et.getText().toString().trim();
         final String umur = this.umur_et.getText().toString().trim();
+        String kat = "";
+        if(tht_rb.isChecked()) {
+            kat = "THT";
+        } else if(mata_rb.isChecked()) {
+            kat = "Mata";
+        } else if(gigi_rb.isChecked()) {
+            kat = "Gigi";
+        } else if(umum_rb.isChecked()) {
+            kat = "Umum";
+        }
         if(laki_laki_rb.isChecked()) {
             jk = "L";
         } else if(perempuan_rb.isChecked()) {
             jk = "P";
         }
         final String jenis_kelamin = jk.trim();
-        final String kategori = this.kat.trim();
+        final String kategori = kat.trim();
         final String tanggal = this.tanggal_et.getText().toString().trim();
         final String keluhan = this.keluhan_et.getText().toString().trim();
         final String username = this.user.getUsername().trim();

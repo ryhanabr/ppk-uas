@@ -108,26 +108,63 @@
                 android:elevation="4dp"
                 android:id="@+id/umur"/>
 
-            <com.google.android.material.textfield.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+            <RadioGroup
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:orientation="horizontal"
                 android:layout_marginTop="20dp"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
-                android:id="@+id/kategori"
-                android:background="#f3f3f3"
+                android:layout_gravity="left"
                 >
 
-                <AutoCompleteTextView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:text="Pilih Kategori"
-                    android:inputType="none"
-                    android:id="@+id/item"
-                    />
+                <RadioButton
+                    android:layout_width="60dp"
+                    android:layout_height="wrap_content"
+                    android:text="THT"
+                    android:layout_marginHorizontal="5dp"
+                    android:background="@drawable/radio_selector"
+                    android:button="@drawable/null_radio_button"
+                    android:elevation="2dp"
+                    android:gravity="center"
+                    android:textColor="@drawable/radio_text_selector"
+                    android:id="@+id/tht"/>
 
+                <RadioButton
+                    android:layout_width="60dp"
+                    android:layout_height="wrap_content"
+                    android:text="Mata"
+                    android:layout_marginHorizontal="5dp"
+                    android:background="@drawable/radio_selector"
+                    android:button="@drawable/null_radio_button"
+                    android:elevation="2dp"
+                    android:gravity="center"
+                    android:textColor="@drawable/radio_text_selector"
+                    android:id="@+id/mata"/>
 
-            </com.google.android.material.textfield.TextInputLayout>
+                <RadioButton
+                    android:layout_width="60dp"
+                    android:layout_height="wrap_content"
+                    android:text="Gigi"
+                    android:layout_marginHorizontal="5dp"
+                    android:background="@drawable/radio_selector"
+                    android:button="@drawable/null_radio_button"
+                    android:elevation="2dp"
+                    android:gravity="center"
+                    android:textColor="@drawable/radio_text_selector"
+                    android:id="@+id/gigi"/>
+
+                <RadioButton
+                    android:layout_width="60dp"
+                    android:layout_height="wrap_content"
+                    android:text="Umum"
+                    android:layout_marginHorizontal="5dp"
+                    android:background="@drawable/radio_selector"
+                    android:button="@drawable/null_radio_button"
+                    android:elevation="2dp"
+                    android:gravity="center"
+                    android:textColor="@drawable/radio_text_selector"
+                    android:id="@+id/umum"/>
+            </RadioGroup>
+
 
             <EditText
                 android:layout_width="match_parent"
